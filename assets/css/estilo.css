@@ -1,0 +1,404 @@
+/* Beato Donato Jiménez Bibiano — hoja de estilo
+   Concepto: fondo blanco y los colores del icono del Perpetuo Socorro.
+   Cada apartado tiene su color, que se repite en el índice, en su cabecera y en sus notas.
+   Las "notas marginales" de la derecha dicen de dónde sale cada dato, como la nota
+   marginal del Registro Civil que en 2006 le devolvió el nombre. */
+
+@font-face {
+  font-family: "Ibarra Real Nova";
+  src: url("../fonts/ibarra-real-nova-latin-400-normal.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Ibarra Real Nova";
+  src: url("../fonts/ibarra-real-nova-latin-400-italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Ibarra Real Nova";
+  src: url("../fonts/ibarra-real-nova-latin-600-normal.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Ibarra Real Nova";
+  src: url("../fonts/ibarra-real-nova-latin-600-italic.woff2") format("woff2");
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+
+:root {
+  /* Base */
+  --fondo: #ffffff;
+  --texto: #22201d;
+  --texto-2: #5d5852;
+  --linea: #e5e1da;
+  /* Colores del icono del Perpetuo Socorro */
+  --azul: #1f4e8c;      /* manto */
+  --azul-vivo: #153a6b;
+  --rojo: #b2382a;      /* túnica; también el martirio */
+  --oro: #8f6611;       /* oro, en tono legible como texto */
+  --oro-claro: #e3b548; /* oro del fondo del icono, para superficies */
+  --verde: #2d6a4b;     /* forro del manto */
+  --turquesa: #16707a;
+  --morado: #673f89;
+  --acento: var(--azul);
+  /* Tipo: Ibarra Real Nova, heredera de los tipos de Joaquín Ibarra (imprenta española, s. XVIII) */
+  --serif: "Ibarra Real Nova", "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --t-base: 1.1875rem;
+  --t-peq: 0.9375rem;
+  --t-h3: 1.375rem;
+  --t-h2: 1.875rem;
+  --t-h1: clamp(2.75rem, 1.6rem + 5.4vw, 5.25rem);
+  --col: 38rem;
+  --margen: 13.5rem;
+  --ancho: 68rem;
+  color-scheme: light;
+}
+
+/* Color de cada apartado */
+.cap-portada, .c-portada { --acento: var(--azul); }
+.cap-vida, .c-vida { --acento: var(--verde); }
+.cap-martirio, .c-martirio { --acento: var(--rojo); }
+.cap-cronologia, .c-cronologia { --acento: var(--oro); }
+.cap-doce, .c-doce { --acento: var(--azul); }
+.cap-memoria, .c-memoria { --acento: var(--turquesa); }
+.cap-fuentes, .c-fuentes { --acento: var(--morado); }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--serif);
+  font-size: var(--t-base);
+  line-height: 1.68;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--azul); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--azul-vivo); }
+:focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3 { font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); font-weight: 600; }
+p { margin: 0; }
+
+.saltar {
+  position: absolute; left: -999px; top: 0;
+  background: var(--azul); color: #fff; padding: 0.5rem 1rem;
+}
+.saltar:focus { left: max(16px, env(safe-area-inset-left, 0px)); top: 0.5rem; z-index: 20; }
+
+.envoltorio {
+  max-width: var(--ancho);
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Cabecera: una franja con los colores de los seis apartados ---------- */
+.cabecera {
+  border-bottom: 1px solid var(--linea);
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(90deg,
+    var(--verde) 0 16.66%, var(--rojo) 16.66% 33.33%, var(--oro-claro) 33.33% 50%,
+    var(--azul) 50% 66.66%, var(--turquesa) 66.66% 83.33%, var(--morado) 83.33% 100%) 1;
+  border-bottom-width: 0;
+  box-shadow: 0 1px 0 var(--linea);
+}
+.cabecera .envoltorio {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding-block: 1rem;
+}
+.marca { color: var(--texto); text-decoration: none; display: grid; line-height: 1.2; }
+.marca:hover { color: var(--texto); }
+.marca span { font-size: 1.125rem; }
+.marca small { font-size: var(--t-peq); color: var(--texto-2); font-style: italic; }
+
+.menu { position: relative; }
+.menu-boton {
+  font: inherit; font-size: 1rem; cursor: pointer; color: #fff; background: var(--azul);
+  padding: 0.35rem 0.9rem; border: 0; border-radius: 2px;
+}
+.menu ul {
+  list-style: none; margin: 0; padding: 0.5rem 0;
+  position: absolute; right: 0; top: calc(100% + 0.6rem); z-index: 10;
+  min-width: 14rem; background: #fff; border: 1px solid var(--linea);
+  box-shadow: 0 10px 30px rgba(31, 78, 140, 0.12);
+}
+.js .menu ul { display: none; }
+.js .menu.abierto ul { display: block; }
+.menu a {
+  display: block; padding: 0.45rem 1.1rem; color: var(--texto); text-decoration: none; font-size: 1.0625rem;
+  border-left: 3px solid var(--acento);
+}
+.menu a:hover { color: var(--acento); }
+.menu a[aria-current="page"] { color: var(--acento); font-style: italic; }
+
+@media (min-width: 62rem) {
+  .menu-boton { display: none; }
+  .menu ul, .js .menu ul {
+    position: static; display: flex; gap: 0.25rem 1.4rem; flex-wrap: wrap; justify-content: flex-end;
+    background: none; border: 0; padding: 0; min-width: 0; box-shadow: none;
+  }
+  .menu a { padding: 0.2rem 0 0.15rem; font-size: 1.0625rem; border-left: 0; border-bottom: 2px solid transparent; }
+  .menu a:hover, .menu a[aria-current="page"] { border-bottom-color: var(--acento); }
+}
+
+/* ---------- Portada ---------- */
+.portada { padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4.5rem); }
+.portada .rejilla { display: grid; gap: 1.5rem 3rem; }
+.acta { font-style: italic; color: var(--texto-2); font-size: 1.0625rem; max-width: 34rem; }
+.acta .tachado { position: relative; white-space: nowrap; color: var(--texto); font-style: normal; }
+.acta .tachado::after {
+  content: ""; position: absolute; left: -0.1em; right: -0.1em; top: 52%;
+  height: 2px; background: var(--rojo);
+  transform: scaleX(1); transform-origin: left center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .acta .tachado::after { transform: scaleX(0); animation: tachar 1.1s 0.6s cubic-bezier(.6,.05,.3,1) forwards; }
+}
+@keyframes tachar { to { transform: scaleX(1); } }
+
+.portada h1 { font-size: var(--t-h1); letter-spacing: -0.012em; line-height: 1.02; margin-top: 0.35rem; color: var(--azul); }
+.portada .sub { font-size: 1.375rem; color: var(--texto-2); font-style: italic; margin-top: 0.75rem; }
+.portada .entrada { max-width: var(--col); margin-top: 1.75rem; font-size: 1.25rem; }
+
+.nota-acta {
+  font-size: var(--t-peq); line-height: 1.5; color: var(--texto-2);
+  border-left: 3px solid var(--oro-claro); padding-left: 0.9rem; max-width: 30rem;
+}
+.nota-acta strong { color: var(--texto); font-weight: 400; font-style: italic; display: block; margin-bottom: 0.2rem; }
+
+@media (min-width: 64rem) {
+  .portada .rejilla { grid-template-columns: minmax(0, 1fr) var(--margen); align-items: start; }
+  .portada .rejilla > * { grid-column: 1; }
+  .portada .rejilla > .nota-acta { grid-column: 2; grid-row: 2 / span 2; margin-top: 1.6rem; }
+}
+
+.fechas {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem; margin: 2.5rem 0 0; max-width: 54rem;
+}
+.fechas div {
+  --c: var(--verde);
+  border-top: 4px solid var(--c); padding: 0.8rem 1rem 0.9rem;
+  background: color-mix(in srgb, var(--c) 8%, white);
+}
+.fechas .martirio { --c: var(--rojo); }
+.fechas .beatificacion { --c: var(--oro-claro); }
+.fechas dt { font-style: italic; color: var(--texto-2); font-size: var(--t-peq); }
+.fechas dd { margin: 0; font-size: 1.5rem; line-height: 1.25; font-variant-numeric: lining-nums; }
+.fechas dd small { display: block; font-size: var(--t-peq); color: var(--texto-2); margin-top: 0.15rem; }
+
+.boton {
+  display: inline-block; margin-top: 2.5rem; padding: 0.75rem 1.5rem;
+  background: var(--azul); color: #fff; text-decoration: none; border-radius: 2px;
+}
+.boton:hover { background: var(--azul-vivo); color: #fff; }
+
+/* ---------- Secciones ---------- */
+.seccion { padding-block: clamp(2.75rem, 6vw, 4.5rem); }
+.seccion + .seccion { border-top: 1px solid var(--linea); }
+
+/* Banda de color para la cita de la portada */
+.banda { background: var(--azul); color: #fff; padding-block: clamp(3rem, 7vw, 5rem); }
+.banda + .seccion { border-top: 0; }
+.banda .cita blockquote p::before, .banda .cita blockquote p::after { color: var(--oro-claro); }
+.banda .cita figcaption { color: rgba(255, 255, 255, 0.85); }
+
+.cabeza-pagina {
+  background: color-mix(in srgb, var(--acento) 9%, white);
+  border-bottom: 3px solid var(--acento);
+  padding-block: clamp(2.75rem, 7vw, 4.75rem) clamp(2rem, 4vw, 3rem);
+}
+.cabeza-pagina .numeral {
+  display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  background: var(--acento); color: #fff; font-size: 1.125rem; font-style: italic; line-height: 1;
+}
+.cabeza-pagina h1 { font-size: clamp(2.4rem, 1.5rem + 4vw, 4rem); margin-top: 0.75rem; color: var(--acento); }
+.cabeza-pagina .entradilla { max-width: var(--col); margin-top: 1.25rem; font-size: 1.25rem; color: var(--texto); font-style: italic; }
+
+.texto { display: grid; grid-template-columns: minmax(0, var(--col)); row-gap: 1.15rem; }
+.texto > * { min-width: 0; }
+.texto h2 { margin-top: 2.25rem; color: var(--acento); }
+.texto h2:first-child { margin-top: 0; }
+.texto h2 .cuando { display: block; font-size: var(--t-peq); font-style: italic; color: var(--texto-2); margin-top: 0.4rem; }
+.texto h3 { margin-top: 1rem; }
+
+.bloque { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 0.6rem; }
+.nota {
+  font-size: var(--t-peq); line-height: 1.5; color: var(--texto-2); font-style: italic;
+  border-left: 3px solid color-mix(in srgb, var(--acento) 55%, white); padding-left: 0.8rem;
+}
+.nota a { font-style: normal; }
+
+@media (min-width: 64rem) {
+  .texto { grid-template-columns: minmax(0, var(--col)) var(--margen); column-gap: 3rem; }
+  .texto > * { grid-column: 1; }
+  .texto > .bloque { grid-column: 1 / -1; grid-template-columns: subgrid; column-gap: 3rem; }
+  .bloque > :not(.nota) { grid-column: 1; }
+  .bloque > .nota { grid-column: 2; grid-row: 1 / span 4; align-self: start; padding-top: 0.2rem; }
+  .texto > .ancho { grid-column: 1 / -1; }
+}
+
+/* Citas */
+.cita { margin: 0.5rem 0; padding: 0; }
+.cita blockquote { margin: 0; font-size: 1.5rem; line-height: 1.4; }
+.cita blockquote p::before { content: "«"; color: var(--acento); }
+.cita blockquote p::after { content: "»"; color: var(--acento); }
+.cita figcaption { margin-top: 0.75rem; font-size: var(--t-peq); color: var(--texto-2); font-style: italic; max-width: 32rem; }
+.cita-grande blockquote { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem); line-height: 1.3; }
+.texto .cita-grande {
+  border-left: 4px solid var(--acento); padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  background: color-mix(in srgb, var(--acento) 6%, white);
+}
+
+/* Figuras */
+.figura { margin: 0.5rem 0; }
+.figura img { background: #f3f1ed; border: 1px solid var(--linea); }
+.figura figcaption { margin-top: 0.6rem; font-size: var(--t-peq); color: var(--texto-2); font-style: italic; max-width: 32rem; }
+.figura-contenida img { width: auto; max-height: 30rem; }
+/* Fotos de poco tamaño: como mucho al doble de su tamaño real, para no emborronarlas */
+.figura-contenida img.pequena { width: min(100%, calc(var(--w) * 2)); max-height: none; }
+
+/* Inventario del acta de defunción */
+.inventario {
+  border: 1px solid color-mix(in srgb, var(--rojo) 30%, white);
+  background: color-mix(in srgb, var(--rojo) 6%, white);
+  padding: 1.25rem 1.4rem; font-size: 1.0625rem;
+}
+.inventario p + p { margin-top: 0.6rem; }
+.inventario .rotulo { font-style: italic; color: var(--rojo); font-size: var(--t-peq); }
+
+/* ---------- Portada: quién fue ---------- */
+.quien { display: grid; gap: 2.5rem; }
+.quien .texto-quien { display: grid; row-gap: 1.15rem; max-width: var(--col); }
+.quien h2 { color: var(--azul); }
+.datos { margin: 0.5rem 0 0; display: grid; gap: 0.6rem; font-size: 1.0625rem; }
+.datos div { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem; border-top: 1px solid var(--linea); padding-top: 0.5rem; }
+.datos dt { color: var(--texto-2); font-style: italic; }
+.datos dd { margin: 0; }
+@media (max-width: 30rem) { .datos div { grid-template-columns: 1fr; gap: 0; } }
+@media (min-width: 64rem) {
+  .quien { grid-template-columns: minmax(0, var(--col)) minmax(0, 1fr); column-gap: 4rem; align-items: start; }
+}
+
+/* ---------- Índice de apartados ---------- */
+.lema { color: var(--texto-2); margin-top: 0.5rem; font-style: italic; }
+#recorrido { color: var(--azul); }
+.indice { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid var(--linea); }
+.indice li { border-bottom: 1px solid var(--linea); }
+.indice a {
+  display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0.25rem 1.25rem;
+  padding: 1.35rem 0; color: var(--texto); text-decoration: none;
+}
+.indice .num {
+  display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  background: var(--acento); color: #fff; font-style: italic; font-size: 1.0625rem; line-height: 1;
+  grid-row: span 2; align-self: start;
+}
+.indice .tit { font-size: 1.625rem; line-height: 1.25; color: var(--acento); }
+.indice .des { color: var(--texto-2); font-size: 1.0625rem; max-width: 40rem; }
+.indice a:hover { background: color-mix(in srgb, var(--acento) 6%, white); }
+@media (min-width: 48rem) {
+  .indice a { grid-template-columns: 4rem minmax(0, 19rem) minmax(0, 1fr); align-items: center; padding-inline: 0.5rem; }
+  .indice .num { grid-row: auto; align-self: center; }
+}
+
+/* ---------- Cronología ---------- */
+.hitos { list-style: none; margin: 0; padding: 0; max-width: 52rem; }
+.hito { display: grid; gap: 0.3rem 2rem; padding: 1.4rem 0; border-top: 1px solid var(--linea); }
+.hito .fecha { color: var(--oro); font-variant-numeric: lining-nums; font-size: 1.0625rem; font-weight: 600; }
+.hito .fecha.sangre { color: var(--rojo); }
+.hito h3 { font-weight: 400; font-size: 1.375rem; }
+.hito p { margin-top: 0.35rem; }
+.hito .fuente { font-size: var(--t-peq); color: var(--texto-2); font-style: italic; margin-top: 0.5rem; }
+@media (min-width: 48rem) { .hito { grid-template-columns: 11rem minmax(0, 1fr); } }
+
+/* ---------- Tabla de los doce ---------- */
+.tabla-scroll { overflow-x: auto; margin-top: 0.5rem; }
+table { border-collapse: collapse; width: 100%; min-width: 40rem; font-size: 1.0625rem; font-variant-numeric: lining-nums tabular-nums; }
+caption { text-align: left; font-style: italic; color: var(--texto-2); font-size: var(--t-peq); padding-bottom: 0.75rem; }
+th, td { text-align: left; padding: 0.6rem 1rem 0.6rem 0.5rem; border-bottom: 1px solid var(--linea); vertical-align: top; }
+th { font-weight: 400; font-style: italic; color: var(--texto-2); font-size: var(--t-peq); }
+tr.destacado td { background: color-mix(in srgb, var(--azul) 9%, white); color: var(--azul-vivo); font-weight: 600; }
+
+/* ---------- Galería ---------- */
+.galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); gap: 1.75rem 1.5rem; margin-top: 1rem; }
+.galeria figure { margin: 0; }
+.galeria .marco {
+  display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 5; padding: 0.9rem;
+  background: #f4f2ee; border: 1px solid var(--linea); transition: border-color .15s, background-color .15s;
+}
+.galeria .marco:hover, .galeria .marco:focus-visible { border-color: var(--acento); background: color-mix(in srgb, var(--acento) 7%, white); }
+.galeria .marco img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.galeria .marco img.pequena { width: min(100%, calc(var(--w) * 2)); }
+.galeria figcaption { margin-top: 0.5rem; font-size: var(--t-peq); color: var(--texto-2); font-style: italic; }
+#galeria { color: var(--acento); }
+
+/* ---------- Documentos ---------- */
+.documentos { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.documentos li { border-top: 1px solid var(--linea); padding: 1.25rem 0; display: grid; gap: 0.35rem; }
+.documentos .titulo-doc { font-size: 1.25rem; }
+.documentos .ref { font-size: var(--t-peq); color: var(--texto-2); font-style: italic; }
+.documentos a { justify-self: start; }
+
+/* ---------- Oración ---------- */
+.oracion {
+  background: color-mix(in srgb, var(--oro-claro) 16%, white);
+  border-left: 4px solid var(--oro-claro);
+  padding: 2rem 1.75rem; max-width: var(--col);
+}
+.oracion p { font-size: 1.375rem; line-height: 1.55; }
+.oracion .invocacion { margin-top: 1.25rem; font-style: italic; color: var(--oro); }
+
+.direccion { border-left: 3px solid var(--acento); padding-left: 1rem; font-size: 1.125rem; line-height: 1.6; }
+
+/* ---------- Paso entre capítulos ---------- */
+.paso { display: grid; gap: 1rem; padding-block: 2.5rem; border-top: 1px solid var(--linea); }
+.paso a { display: grid; text-decoration: none; color: var(--texto); }
+.paso a span { font-size: var(--t-peq); font-style: italic; color: var(--texto-2); }
+.paso a strong { font-weight: 400; font-size: 1.375rem; color: var(--azul); }
+.paso a:hover strong { color: var(--azul-vivo); text-decoration: underline; text-underline-offset: 0.18em; }
+@media (min-width: 48rem) { .paso { grid-template-columns: 1fr 1fr; } .paso .sig { text-align: right; } }
+
+/* ---------- Pie ---------- */
+.pie { background: var(--azul); color: #fff; }
+.pie a { color: #fff; }
+.pie a:hover { color: var(--oro-claro); }
+.pie .envoltorio { padding-block: 2.5rem 3rem; display: grid; gap: 1.5rem; }
+.pie .quien-pie { font-size: 1.125rem; }
+.pie .quien-pie small { display: block; color: rgba(255, 255, 255, 0.85); font-style: italic; font-size: var(--t-peq); margin-top: 0.2rem; }
+.pie ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-size: 1rem; }
+.pie .aviso { font-size: var(--t-peq); color: rgba(255, 255, 255, 0.88); max-width: 46rem; display: grid; gap: 0.6rem; }
+
+/* Partición de palabras */
+.portada .entrada, .texto p, .texto-quien p { hyphens: auto; }
+.texto .nota, .nota-acta { hyphens: manual; }
+
+/* Tabla en pantallas estrechas */
+@media (max-width: 40rem) {
+  table { min-width: 0; }
+  thead { display: none; }
+  tbody tr { display: grid; gap: 0.15rem; padding: 0.85rem 0.5rem; border-bottom: 1px solid var(--linea); }
+  td { border: 0; padding: 0; }
+  tr.destacado td { background: none; }
+  tr.destacado { background: color-mix(in srgb, var(--azul) 9%, white); }
+  td:first-child { font-size: 1.125rem; }
+  td[data-label] { font-size: var(--t-peq); color: var(--texto-2); font-weight: 400; }
+  td[data-label]::before { content: attr(data-label) ": "; font-style: italic; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .cabecera, .pie, .paso, .boton { display: none; }
+  .banda { background: none; color: #000; }
+  .nota { color: #333; }
+}
