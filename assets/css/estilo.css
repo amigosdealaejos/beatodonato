@@ -402,3 +402,10 @@ tr.destacado td { background: color-mix(in srgb, var(--azul) 9%, white); color: 
   .banda { background: none; color: #000; }
   .nota { color: #333; }
 }
+
+/* Portada: invitación a rezar */
+.reza { background: color-mix(in srgb, var(--acento) 7%, white); border-top: 3px solid var(--acento); }
+.reza h2 { color: var(--acento); }
+.reza p { max-width: var(--col); margin: 0.75rem 0 1.5rem; }
+.reza .boton { background: var(--acento); border-color: var(--acento); margin-top: 0; }
+.reza .boton:hover { background: color-mix(in srgb, var(--acento) 78%, black); }
