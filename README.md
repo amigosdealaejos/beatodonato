@@ -16,6 +16,7 @@ Es un sitio estático, sin dependencias, pensado para GitHub Pages.
 | `assets/css/estilo.css` | Estilos |
 | `assets/fonts/` | Tipografía Ibarra Real Nova (licencia SIL OFL 1.1) |
 | `assets/img/` | Fotografías, imagen para redes sociales e iconos |
+| `assets/docs/` | Los seis documentos de la causa en PDF |
 
 ## Cómo cambiar un texto
 

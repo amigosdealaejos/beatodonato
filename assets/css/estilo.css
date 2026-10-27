@@ -409,3 +409,4 @@ tr.destacado td { background: color-mix(in srgb, var(--azul) 9%, white); color: 
 .reza p { max-width: var(--col); margin: 0.75rem 0 1.5rem; }
 .reza .boton { background: var(--acento); border-color: var(--acento); margin-top: 0; }
 .reza .boton:hover { background: color-mix(in srgb, var(--acento) 78%, black); }
+.peso { color: var(--texto-2); font-size: var(--t-peq); white-space: nowrap; }
