@@ -8,8 +8,10 @@ Es un sitio estático, sin dependencias, pensado para GitHub Pages.
 
 | Ruta | Qué es |
 |---|---|
-| `index.html`, `vida.html`, `martirio.html`, `cronologia.html`, `los-12.html`, `memoria.html`, `fuentes.html` | Páginas publicadas (se generan, no se editan a mano) |
-| `_fuente/paginas/` | Texto de cada página. **Aquí se corrige el contenido.** |
+| `index.html`, `vida.html`, `martirio.html`, `cronologia.html`, `los-12.html`, `memoria.html`, `fuentes.html` | Páginas publicadas en español (se generan, no se editan a mano) |
+| `en/` | Las mismas páginas en inglés (también generadas) |
+| `_fuente/paginas/` | Texto de cada página en español. **Aquí se corrige el contenido.** |
+| `_fuente/pages-en/` | Texto de cada página en inglés |
 | `_fuente/construir.py` | Une cada texto con la cabecera, el menú y el pie y genera las páginas |
 | `_fuente/procesar_fotos.py` | Convierte las fotos de `_originales/` (no se suben al repositorio) en las versiones web de `assets/img/` |
 | `_fuente/imagen_redes.py` | Genera `og-portada.jpg`, la imagen que se ve al compartir el enlace |
@@ -20,7 +22,7 @@ Es un sitio estático, sin dependencias, pensado para GitHub Pages.
 
 ## Cómo cambiar un texto
 
-1. Edita el archivo correspondiente en `_fuente/paginas/`.
+1. Edita el archivo correspondiente en `_fuente/paginas/` y, si el cambio afecta al contenido, también su versión en `_fuente/pages-en/`.
 2. Ejecuta `python3 _fuente/construir.py`.
 3. Sube los cambios.
 
