@@ -97,7 +97,7 @@ CABEZA = """<!doctype html>
 <link rel="alternate" hreflang="es" href="{url_es}">
 <link rel="alternate" hreflang="en" href="{url_en}">
 <link rel="alternate" hreflang="x-default" href="{url_es}">
-<meta name="theme-color" content="#1f4e8c">
+<meta name="theme-color" content="#85621a">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="{locale}">
