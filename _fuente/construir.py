@@ -52,10 +52,10 @@ PAGINAS = [
                "No known grave: Alaejos, those who kept his memory alive, and the photo gallery of Blessed Donato Jiménez Bibiano."),
     }),
     ("cap-fuentes", "VI", {
-        "es": ("fuentes.html", "Fuentes y oración", "Fuentes y oración",
-               "Documentos originales de la causa del beato Donato Jiménez Bibiano, publicaciones, criterios de cita y oración para pedir su intercesión."),
-        "en": ("sources.html", "Sources & prayer", "Sources and prayer",
-               "Original documents from the cause of Blessed Donato Jiménez Bibiano, publications, how quotations are handled, and a prayer for his intercession."),
+        "es": ("fuentes.html", "Oración y fuentes", "Oración y fuentes",
+               "Oración para pedir la intercesión del beato Donato Jiménez Bibiano, documentos originales de su causa, publicaciones y criterios de cita."),
+        "en": ("sources.html", "Prayer & sources", "Prayer and sources",
+               "A prayer for the intercession of Blessed Donato Jiménez Bibiano, original documents from his cause, publications, and how quotations are handled."),
     }),
 ]
 
