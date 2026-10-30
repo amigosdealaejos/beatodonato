@@ -23,9 +23,9 @@ PAGINAS = [
     }),
     ("cap-vida", "I", {
         "es": ("vida.html", "Su vida", "Su vida",
-               "Infancia en Alaejos, la misión de 1887, la vocación redentorista y más de treinta años de misionero y superior, contados desde sus propios escritos y los de su amigo el P. Saturnino Martín."),
+               "Infancia en Alaejos, la misión de 1887, la vocación redentorista y más de treinta años de misionero, contados desde sus propios escritos y los de su amigo el P. Saturnino Martín."),
         "en": ("life.html", "His life", "His life",
-               "Childhood in Alaejos, the parish mission of 1887, his Redemptorist vocation and over thirty years as a missionary and superior, told from his own writings and those of his friend Fr Saturnino Martín."),
+               "Childhood in Alaejos, the parish mission of 1887, his Redemptorist vocation and over thirty years as a missionary, told from his own writings and those of his friend Fr Saturnino Martín."),
     }),
     ("cap-martirio", "II", {
         "es": ("martirio.html", "Martirio", "El martirio",
