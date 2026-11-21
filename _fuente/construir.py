@@ -17,21 +17,21 @@ URL_BASE = "https://beatodonato.com/"
 PAGINAS = [
     ("cap-portada", None, {
         "es": ("index.html", "Portada", "Beato Donato Jiménez Bibiano (1873–1936) · Mártir redentorista de Alaejos",
-               "Vida, martirio y memoria del beato Donato Jiménez Bibiano (Alaejos, 1873 – Madrid, 1936), sacerdote y misionero redentorista, beatificado en 2022. Contado desde las fuentes."),
+               "Vida, martirio y memoria del beato Donato Jiménez Bibiano (Alaejos, 1873 – Madrid, 1936), misionero redentorista beatificado en 2022."),
         "en": ("index.html", "Home", "Blessed Donato Jiménez Bibiano (1873–1936) · Redemptorist martyr from Alaejos",
-               "The life, martyrdom and memory of Blessed Donato Jiménez Bibiano (Alaejos, 1873 – Madrid, 1936), Redemptorist priest and missionary, beatified in 2022. Told from the sources."),
+               "The life, martyrdom and memory of Blessed Donato Jiménez Bibiano (Alaejos, 1873 – Madrid, 1936), Redemptorist missionary beatified in 2022."),
     }),
     ("cap-vida", "I", {
         "es": ("vida.html", "Su vida", "Su vida",
-               "Infancia en Alaejos, la misión de 1887, la vocación redentorista y más de treinta años de misionero, contados desde sus propios escritos y los de su amigo el P. Saturnino Martín."),
+               "Infancia en Alaejos, la misión de 1887, la vocación redentorista y más de treinta años de misionero, según sus escritos y los del P. Saturnino Martín."),
         "en": ("life.html", "His life", "His life",
-               "Childhood in Alaejos, the parish mission of 1887, his Redemptorist vocation and over thirty years as a missionary, told from his own writings and those of his friend Fr Saturnino Martín."),
+               "Childhood in Alaejos, the 1887 mission, his Redemptorist vocation and over thirty years as a missionary, from his writings and those of Fr Saturnino Martín."),
     }),
     ("cap-martirio", "II", {
         "es": ("martirio.html", "Martirio", "El martirio",
-               "Dos meses escondido, la detención en la calle Mayor, la celda número 5 de la checa de Fomento y su muerte el 18 de septiembre de 1936, con los testimonios de quienes lo vieron."),
+               "Dos meses escondido, la detención en la calle Mayor, la celda 5 de la checa de Fomento y su muerte el 18 de septiembre de 1936, según quienes lo vieron."),
         "en": ("martyrdom.html", "Martyrdom", "The martyrdom",
-               "Two months in hiding, his arrest in Calle Mayor, cell number 5 of the Fomento checa and his death on 18 September 1936, with the testimony of those who saw him."),
+               "Two months in hiding, his arrest in Calle Mayor, cell 5 of the Fomento checa and his death on 18 September 1936, as told by those who saw him."),
     }),
     ("cap-cronologia", "III", {
         "es": ("cronologia.html", "Cronología", "Cronología",
@@ -230,12 +230,24 @@ def construir():
             (destino / archivo).write_text(html, encoding="utf-8")
 
     hoy = date.today().isoformat()
+
+    def fecha_fuente(carpeta, archivo, por_defecto):
+        """Fecha del último cambio del texto de la página según git (la de hoy si aún no está guardado)."""
+        import subprocess
+        ruta = RAIZ / "_fuente" / carpeta / archivo
+        r = subprocess.run(["git", "status", "--porcelain", "--", str(ruta)], cwd=RAIZ, capture_output=True, text=True)
+        if r.stdout.strip():
+            return por_defecto
+        r = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(ruta)], cwd=RAIZ, capture_output=True, text=True)
+        return r.stdout.strip() or por_defecto
+
     mapa = ['<?xml version="1.0" encoding="UTF-8"?>',
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for _, _, datos in PAGINAS:
         alternos = "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{url_de(l, datos[l][0])}"/>' for l in IDIOMAS)
         for lengua in IDIOMAS:
-            mapa.append(f"  <url><loc>{url_de(lengua, datos[lengua][0])}</loc><lastmod>{hoy}</lastmod>{alternos}</url>")
+            mapa.append(f"  <url><loc>{url_de(lengua, datos[lengua][0])}</loc>"
+                        f"<lastmod>{fecha_fuente(IDIOMAS[lengua]['fragmentos'], datos[lengua][0], hoy)}</lastmod>{alternos}</url>")
     mapa.append("</urlset>")
     (RAIZ / "sitemap.xml").write_text("\n".join(mapa) + "\n", encoding="utf-8")
     (RAIZ / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {URL_BASE}sitemap.xml\n", encoding="utf-8")
